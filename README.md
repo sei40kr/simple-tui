@@ -30,7 +30,7 @@ this looks:
 ### Install with curl
 
 ```bash
-eval "$(curl https://raw.githubusercontent.com/sei40kr/simple-tui/master/src/simple-tui.bash)"
+eval "$(curl https://raw.githubusercontent.com/sei40kr/simple-tui/master/simple-tui.bash)"
 ```
 
 ### Install with Git
@@ -44,5 +44,5 @@ git submodule add https://github.com/sei40kr/simple-tui.git script_helpers/simpl
 and source in your script:
 
 ```bash
-. "/path/to/script_helpers/simple-tui/src/simple-tui.bash"
+. "/path/to/script_helpers/simple-tui/simple-tui.bash"
 ```
