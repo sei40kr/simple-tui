@@ -9,7 +9,7 @@ __tui_print() {
     local -a args=( "$@" )
 
     printf "%${__tui_print_indent}s" ''
-    echo -e "${args[@]}"
+    echo "${args[@]}"
 }
 
 tui_group() {
