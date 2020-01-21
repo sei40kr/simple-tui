@@ -27,6 +27,22 @@ this looks:
 
 ## Install
 
+### Install with curl
+
 ```bash
 eval "$(curl https://raw.githubusercontent.com/sei40kr/simple-tui/master/src/simple-tui.bash)"
+```
+
+### Install with Git
+
+Clone as a submodule of your repository:
+
+```bash
+git submodule add https://github.com/sei40kr/simple-tui.git script_helpers/simple-tui
+```
+
+and source in your script:
+
+```bash
+. "/path/to/script_helpers/simple-tui/src/simple-tui.bash"
 ```
