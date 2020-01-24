@@ -1,8 +1,3 @@
-__tui_color_red='\033[00;31m'
-__tui_color_green='\033[00;32m'
-__tui_color_yellow='\033[00;33m'
-__tui_color_none='\033[0m'
-
 __tui_indent=0
 
 tui-increment-indent() {
@@ -12,6 +7,26 @@ tui-increment-indent() {
 tui-decrement-indent() {
     __tui_indent="$((__tui_indent-2))"
 }
+
+
+tui-red() {
+    local text="$1"
+
+    echo "\033[31m${text}\033[m"
+}
+
+tui-green() {
+    local text="$1"
+
+    echo "\033[32m${text}\033[m"
+}
+
+tui-yellow() {
+    local text="$1"
+
+    echo "\033[33m${text}\033[m"
+}
+
 
 tui-print() {
     local -a args=( "$@" )
