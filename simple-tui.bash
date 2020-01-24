@@ -42,6 +42,12 @@ tui-print() {
     echo "$message" | __tui_fold | __tui_indent
 }
 
+tui-print-prompt() {
+    local message="$1"
+
+    echo -n "? ${message}: " | __tui_fold | __tui_indent
+}
+
 tui-print-group() {
     local message="$1"
 
