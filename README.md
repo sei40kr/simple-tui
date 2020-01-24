@@ -31,11 +31,11 @@ eval "$(curl https://raw.githubusercontent.com/sei40kr/simple-tui/master/simple-
 Clone as a submodule of your repository:
 
 ```bash
-git submodule add https://github.com/sei40kr/simple-tui.git script_helpers/simple-tui
+git submodule add https://github.com/sei40kr/simple-tui.git script-helpers/simple-tui
 ```
 
 and source in your script:
 
 ```bash
-. "/path/to/script_helpers/simple-tui/simple-tui.bash"
+. "/path/to/script-helpers/simple-tui/simple-tui.bash"
 ```
