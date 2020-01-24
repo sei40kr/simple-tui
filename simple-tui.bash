@@ -3,46 +3,48 @@ __tui_color_green='\033[00;32m'
 __tui_color_yellow='\033[00;33m'
 __tui_color_none='\033[0m'
 
-__tui_print_indent=0
+__tui_indent=0
 
-__tui_print() {
+tui-increment-indent() {
+    __tui_indent="$((__tui_indent+2))"
+}
+
+tui-decrement-indent() {
+    __tui_indent="$((__tui_indent-2))"
+}
+
+tui-print() {
     local -a args=( "$@" )
 
-    printf "%${__tui_print_indent}s" ''
+    printf "%${__tui_indent}s" ''
     echo -e "${args[@]}"
 }
 
-tui_group() {
+tui-print-group() {
     local -a args=( "$@" )
 
-    __tui_print '>' "${args[@]}"
-    __tui_print_indent="$((__tui_print_indent+2))"
+    tui-print '>' "${args[@]}"
+    tui-increment-indent
 }
 
-tui_group_end() {
-    __tui_print_indent="$((__tui_print_indent-2))"
+tui-print-group-end() {
+    tui-decrement-indent
 }
 
-tui_info() {
+tui-print-warning() {
     local -a args=( "$@" )
 
-    __tui_print '-' "${args[@]}"
+    tui-print "${__tui_color_yellow}!" "${args[@]}" "${__tui_color_none}" >&2
 }
 
-tui_warn() {
+tui-done() {
     local -a args=( "$@" )
 
-    __tui_print "${__tui_color_yellow}!" "${args[@]}" "${__tui_color_none}" >&2
+    tui-print "${__tui_color_green}✓" "${args[@]}" "${__tui_color_none}"
 }
 
-tui_done() {
+tui-error() {
     local -a args=( "$@" )
 
-    __tui_print "${__tui_color_green}✓" "${args[@]}" "${__tui_color_none}"
-}
-
-tui_error() {
-    local -a args=( "$@" )
-
-    __tui_print "${__tui_color_red}☓" "${args[@]}" "${__tui_color_none}" >&2
+    tui-print "${__tui_color_red}☓" "${args[@]}" "${__tui_color_none}" >&2
 }
