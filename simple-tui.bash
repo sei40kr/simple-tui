@@ -12,33 +12,32 @@ tui-decrement-indent() {
 tui-red() {
     local text="$1"
 
-    echo "\033[31m${text}\033[m"
+    echo -e "\033[31m${text}\033[m"
 }
 
 tui-green() {
     local text="$1"
 
-    echo "\033[32m${text}\033[m"
+    echo -e "\033[32m${text}\033[m"
 }
 
 tui-yellow() {
     local text="$1"
 
-    echo "\033[33m${text}\033[m"
+    echo -e "\033[33m${text}\033[m"
 }
 
 
 tui-print() {
-    local -a args=( "$@" )
+    local message="$1"
 
-    printf "%${__tui_indent}s" ''
-    echo -e "${args[@]}"
+    printf "%${__tui_indent}s%s\n" '' "$message"
 }
 
 tui-print-group() {
-    local -a args=( "$@" )
+    local message="$1"
 
-    tui-print '>' "${args[@]}"
+    tui-print "> ${message}"
     tui-increment-indent
 }
 
@@ -47,19 +46,19 @@ tui-print-group-end() {
 }
 
 tui-print-warning() {
-    local -a args=( "$@" )
+    local message="$1"
 
-    tui-print "${__tui_color_yellow}!" "${args[@]}" "${__tui_color_none}" >&2
+    tui-print "$(tui-yellow "! ${message}")" >&2
 }
 
 tui-done() {
-    local -a args=( "$@" )
+    local message="$1"
 
-    tui-print "${__tui_color_green}✓" "${args[@]}" "${__tui_color_none}"
+    tui-print "$(tui-green "✓ ${message}")"
 }
 
 tui-error() {
-    local -a args=( "$@" )
+    local message="$1"
 
-    tui-print "${__tui_color_red}☓" "${args[@]}" "${__tui_color_none}" >&2
+    tui-print "$(tui-red "☓ ${message}")" >&2
 }
