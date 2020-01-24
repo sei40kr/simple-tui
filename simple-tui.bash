@@ -28,10 +28,18 @@ tui-yellow() {
 }
 
 
+__tui_fold() {
+    fold -s -w "$((80-__tui_indent))"
+}
+
+__tui_indent() {
+    sed "s/^/$(printf "%${__tui_indent}s" '')/"
+}
+
 tui-print() {
     local message="$1"
 
-    printf "%${__tui_indent}s%s\n" '' "$message"
+    echo "$message" | __tui_fold | __tui_indent
 }
 
 tui-print-group() {
